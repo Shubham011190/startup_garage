@@ -55,21 +55,5 @@ router.delete("/:postId", async (req, res) => {
     }
 });
 
-router.patch("/:postId", async (req, res) => {
-    try {
-        const patchedPost = Post.updateOne({
-            _id: req.params.postId
-        }, {
-            $set: {
-                title: req.body.title,
-            }
-        });
-        res.json(patchedPost).status(200);
-    } catch (err) {
-        res.json({
-            message: err
-        }).status(400);
-    }
-})
 
 module.exports = router;
